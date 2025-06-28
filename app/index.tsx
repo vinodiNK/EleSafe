@@ -21,7 +21,7 @@ export default function LoginScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Role-Based Login</Text>
+      <Text style={styles.title}> Login Page</Text>
       <TextInput
         placeholder="Email"
         value={email}
