@@ -2,7 +2,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-    Alert,
     KeyboardAvoidingView,
     Platform,
     StyleSheet,
@@ -11,6 +10,7 @@ import {
     TouchableOpacity,
     View,
 } from "react-native";
+import Toast from "react-native-toast-message";
 import { loginWithRole } from "../utils/authApi";
 
 export default function LoginScreen() {
@@ -20,12 +20,20 @@ export default function LoginScreen() {
 
   const handleLogin = async () => {
     if (!email.trim() || !password.trim()) {
-      Alert.alert("Missing Fields", "Please enter both email and password.");
+      Toast.show({
+        type: "error",
+        text1: "Missing Fields",
+        text2: "Please enter both email and password.",
+      });
       return;
     }
 
     if (password.length < 6) {
-      Alert.alert("Invalid Password", "Password must be at least 6 characters.");
+      Toast.show({
+        type: "error",
+        text1: "Invalid Password",
+        text2: "Password must be at least 6 characters.",
+      });
       return;
     }
 
@@ -34,7 +42,11 @@ export default function LoginScreen() {
     if (result.success) {
       router.push(`/dashboard/${result.role}`);
     } else {
-      Alert.alert("Login Failed", "Please enter correct email and password.");
+      Toast.show({
+        type: "error",
+        text1: "Login Failed",
+        text2: "Please enter correct email and password.",
+      });
     }
   };
 
@@ -70,6 +82,9 @@ export default function LoginScreen() {
             <Text style={styles.buttonText}>🔐 Login</Text>
           </TouchableOpacity>
         </View>
+
+        {/* Toast must be added once at root */}
+        <Toast />
       </KeyboardAvoidingView>
     </LinearGradient>
   );
@@ -99,7 +114,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 25,
     textAlign: "center",
-    color: "#4C1D95", // purple shade
+    color: "#4C1D95", // purple
   },
   input: {
     borderWidth: 1,
@@ -111,7 +126,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#f9f9f9",
   },
   button: {
-    backgroundColor: "#6D28D9", // purple button
+    backgroundColor: "#6D28D9", // purple
     paddingVertical: 12,
     borderRadius: 10,
     alignItems: "center",
