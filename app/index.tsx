@@ -81,6 +81,13 @@ export default function LoginScreen() {
           <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>🔐 Login</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity
+            style={[styles.button, { backgroundColor: "#10B981", marginTop: 12 }]}
+            onPress={() => router.push("/update-elephant-location")}
+          >
+            <Text style={styles.buttonText}>🐘 Update Elephant Location</Text>
+          </TouchableOpacity>
         </View>
 
         {/* Toast must be added once at root */}
