@@ -2,13 +2,13 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useRouter } from "expo-router";
 import React, { useState } from "react";
 import {
-    KeyboardAvoidingView,
-    Platform,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View,
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import Toast from "react-native-toast-message";
 import { loginWithRole } from "../utils/authApi";
@@ -83,13 +83,12 @@ export default function LoginScreen() {
           </TouchableOpacity>
 
           <TouchableOpacity
-            style={[styles.button, { backgroundColor: "#10B981", marginTop: 12 }]}
-            onPress={() => router.push("/update-elephant-location")}
-          >
-            <Text style={styles.buttonText}>🐘 Update Elephant Location</Text>
-          </TouchableOpacity>
+  style={[styles.button, { backgroundColor: "#10B981", marginTop: 12 }]}
+  onPress={() => router.push("/update-elephant-location")} // This handles navigation
+>
+  <Text style={styles.buttonText}>🐘 Update Elephant Location</Text>
+</TouchableOpacity>
         </View>
-
         {/* Toast must be added once at root */}
         <Toast />
       </KeyboardAvoidingView>
